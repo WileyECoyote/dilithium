@@ -1,0 +1,6 @@
+*~
+Makefile
+Makefile.in
+proj/
+autom4te.cache/
+

@@ -1,0 +1,18 @@
+#!/sbin/runscript
+
+depend() {
+   need xfs
+}
+
+start() {
+   ebegin "Starting ldilithium"
+   start-stop-daemon --start --quiet --background --pidfile /var/run/dilithium.pid --exec /bin/dilithium -- @USER
+   eend $?
+}
+
+stop() {
+   ebegin "Stopping ldilithium"
+   start-stop-daemon --stop --pidfile /var/run/dilithium.pid
+   eend $?
+}
+

@@ -1,0 +1,5 @@
+/*! \mainpage dilithium - a Launcher for fvwm-crystal.
+\image html crystal.png
+\section dilithium-intro Dilithium Introduction
+    \htmlinclude what-is-dilithium.html
+*/

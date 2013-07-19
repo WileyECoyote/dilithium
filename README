@@ -1,0 +1,39 @@
+dilithium
+
+Most Linux distribution install a default X server and display manager
+combination. The system are pre-configured and typically work quite well
+but tend to be heavy-weight and customization is limited to simple schemes
+called themes. Themes contain a set or collection of schemes. A theme could
+be a single font, a single icon or a barrage of back-ground images and color
+configuration. There is no real definition of what constitutes a "theme".
+
+Another option is to use an alternative display manager. These Alternatives
+are typically available through the distribution but are not so "integrated"
+with the system since the distributor was primarily focused on integrating
+the "chosen" display manager. One of these alternative is fvwm-crystal.
+
+Crystal is a some-what extreme example of display manager customization.
+Crystal is actually a theme for the fvwm display manager. Unlike the simple
+schemes used with gnome based display managers, Crystal is more of a
+programmable theme that can quickly transform the appearance of the user
+interface. One obstacle to using any alternative display manager is getting
+it started. This is not unique to fvwm or crystal, it is more a side-effect
+of having the system pre-configured for the "chosen" display manager.
+
+Dilithium is simple program intended to simplfiy the task of starting
+fvwm-crystal. Dilithium can be started as a daemon from an init.d script
+or as a simple command line launcher like startx for xinit.
+
+dilithium is basically like using startx, except that dilithium is intended
+to be using to start fvwm-crystal. Startx end up using xinit, though I am not
+sure why; what little that is left to be done to start the X server could
+easily be done in the startx bash script. By default dilithium does not use
+xinit. To force dilithium to use xinit the --xinit switch must be used,
+noting that user information must be know. This means the --xinit option can
+not be used for lauching the display manager for system startup unless the
+--user switch is also given.
+
+dilithium accepts a --client argument, so it actually could be used with
+other display managers.
+
+Wiley

@@ -1,0 +1,372 @@
+<!-- Creator     : groff version 1.21 -->
+<!-- CreationDate: Thu Jul 18 08:50:14 2013 -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta name="Content-Style" content="text/css">
+<style type="text/css">
+       p       { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       pre     { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       table   { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       h1      { text-align: center }
+</style>
+<title>dilithium</title>
+
+</head>
+<body>
+
+<h1 align="center">dilithium</h1>
+
+<a href="#NAME">NAME</a><br>
+<a href="#SYNOPSIS">SYNOPSIS</a><br>
+<a href="#EXAMPLES">EXAMPLES</a><br>
+<a href="#DESCRIPTION">DESCRIPTION</a><br>
+<a href="#PARAMETERS">PARAMETERS</a><br>
+<a href="#INFORMATION">INFORMATION</a><br>
+<a href="#DIRECTIVES">DIRECTIVES</a><br>
+<a href="#HOMEPAGE">HOMEPAGE</a><br>
+<a href="#BUGS">BUGS</a><br>
+<a href="#AUTHOR">AUTHOR</a><br>
+<a href="#SEE ALSO">SEE ALSO</a><br>
+<a href="#COPYRIGHT">COPYRIGHT</a><br>
+
+<hr>
+
+
+<h2>NAME
+<a name="NAME"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>dilithium</b>
+&minus; Launcher for FVWM Display manager with Crystal
+environment</p>
+
+<h2>SYNOPSIS
+<a name="SYNOPSIS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>dilithium
+[options] [-c &lt;client&gt; [-a &lt;client arguments&gt; ]]
+[-s &lt;xserver&gt; [-x &lt;xserver arguments&gt; ]]</b></p>
+
+<h2>EXAMPLES
+<a name="EXAMPLES"></a>
+</h2>
+
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="8%"></td>
+<td width="7%">
+</td>
+<td width="85%">
+
+
+<p>1. dilithium -client /usr/bin/fvwm-crystal -s /usr/bin/X
+-x -br</p></td></tr>
+<tr valign="top" align="left">
+<td width="8%"></td>
+<td width="7%"></td>
+<td width="85%">
+
+
+<p>2. dilithium --daemon --no-kill</p></td></tr>
+<tr valign="top" align="left">
+<td width="8%"></td>
+<td width="7%"></td>
+<td width="85%">
+
+
+<p>3. /etc/init.d/dilithium start</p></td></tr>
+</table>
+
+<h2>DESCRIPTION
+<a name="DESCRIPTION"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">The
+<b>Dilithium</b> program is used to start the X Window
+System server and fvwm client display manager using the
+crystal interface configuration on systems that cannot start
+X directly from /etc/init or in environments that use
+multiple window systems. Dilithium utilizes the xinit
+program to accomplish this task. Dilithium attempts to
+auto-configure all options and environment settings in order
+to start the X sever with fvwm-crystal. Options may also be
+specified using command line parameters. Parameters are
+optional and are non-positional, for example the server
+argument could be specified before the client or the server
+after the server arguments. The parameters are case
+sensitive. Since the client display manager is a parameter,
+Dilithium can be used to start other display managers.</p>
+
+<p style="margin-left:11%; margin-top: 1em">Dilithium can
+be used to start fvwm-crystal in different situations
+without addition information. Both startX and xinit attempt
+to do this but are not reliable in some envirnments, such as
+Debian and direvitives, without additional parameters.
+Dilithium can be used to start Crystal from a command line
+or in conjunction with initialization scripts such as Sys V
+init.d scripts. Example initialization scripts are provided.
+On some systems, such as Debian, options for Sys V
+initialization can be set using /etc/default/dilithium
+parameter file. A default parameter file is also provided.
+On systems where multiple display managers are installed,
+there are a couple of other optional files that may
+facilitate starting fvwm-crystal:</p>
+
+<p style="margin-left:11%; margin-top: 1em">1.
+/etc/X11/cyrstal-display-manager 2. ~/.xinit</p>
+
+<p style="margin-left:11%; margin-top: 1em">The first file,
+crystal-display-manager, only needs to contain
+&quot;/usr/bin/fvwm-crystal&quot; on one line, without the
+quotes. The second file, .xinit, contain a line with:
+&quot;exec fvwm-crystal&quot; also without the quotes, but
+this file can also contain other information.</p>
+
+<p style="margin-left:11%; margin-top: 1em">Generally only
+one primary display manager is running on one X server and
+most modern Linux systems automatically boot into a
+Graphical User Interface such as gdm3. It is not uncommon to
+have 2 or more display managers installed and switch between
+managers using gsettings or the unfriendly
+&quot;greeter&quot;. It is also entirely possible to have
+multiple display managers running at the same time. As a
+simple example, from within gdm or gdm3, open a terminal and
+type &quot;sudo dilithium&quot; &lt;enter&gt;. This will
+start a second server with fvwm-crystal as the display
+manager using the next available display.
+&quot;Display&quot; in this context refers to a virtual
+display not a physical display. To switch back to the gdm3
+session use the key combination CTRL-ALT-F7. If you see a
+login prompt then try CTRL-ALT-F8. To switch back to the
+fvwm-crystal session use CTRL-ALT &amp; the next F-key,
+either F8 or F9. (Note that most Linux systems are
+configured to use 6 or 7 seperate virtual terminals, which
+one can switch between using the ALT-F1 thru - F6 or F7 key
+combinations. To switch away from a Graphical display
+terminal the CTRL key must be added. So if while trying to
+switch between the Graphical display terminals in this
+example using CTRL-ALT-F? and you see a login prompt, which
+is running on one of the virtual terminals then you
+don&rsquo;t need to add the CTRL key. If you see a login
+prompt then you only need use the ALT-F key combination to
+switch between the terminals, for example ALT-F2 will switch
+to virtual terminal 2. From the virtual terminal screen use
+ALT-F7 or ALT-F8 (depending on how many virtual terminals
+are configured, to switch back to the Graphical
+terminals).</p>
+
+<p style="margin-left:11%; margin-top: 1em">Switch back to
+the display and desktop with the terminal window type
+&quot;sudo dilithium&quot; was enter and &quot;select&quot;
+the window by clicking on window, then use the
+&quot;CTRL-C&quot; key combination to cancel or kills the
+second X server and display manager. If all else fails,
+select re-start or re-boot from either manager to restore
+the system back to normal. This is just an example to
+demonstrate running two separate display managers
+simultaneously. A more realistic application would be to
+start gdm3 for run level 2 or 3 and use dilithium to start
+fvwm-crystal for a different run-level.</p>
+
+<p style="margin-left:11%; margin-top: 1em">Note that
+Dilithium does not check command line arguments, for example
+if &quot;--client /usr/bin/grapes --cargs purple&quot; is
+specified then this will passed to xinit.</p>
+
+<h2>PARAMETERS
+<a name="PARAMETERS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">-c, --client
+&lt;client&gt;</p>
+
+<p style="margin-left:22%;">This is the name of the program
+that will be passed to xinit as the client argument. The
+default is /usr/bin/fvwm-crystal. Note that xinit requires
+both the client and the server to have a leading slash
+character.</p>
+
+<p style="margin-left:11%;">-a, --cargs &lt;client
+arguments&gt;</p>
+
+<p style="margin-left:22%;">If more then one argument is to
+be passed to the client then the all of the aguments should
+be enclosed with single quotes.</p>
+
+<p style="margin-left:11%;">-s, --server
+&lt;xserver&gt;</p>
+
+<p style="margin-left:22%;">Specify the X server to be
+passed to xinit. The default is /usr/bin/X.</p>
+
+<p style="margin-left:11%;">-x --xargs &lt;xserver
+arguments&gt;</p>
+
+<p style="margin-left:22%;">Specify optional arguments to
+be passed to the X server, the default is &rsquo;-br
+-novtswitch -nolisten&rsquo;. If more then one argument is
+to be passed to the server then the all of the aguments
+should be enclosed with single quotes as shown in the
+preceding sentence.</p>
+
+<p style="margin-left:11%;">:, --display</p>
+
+<p style="margin-left:22%;">Specify the display to be used
+for the X server. The default is to determine the next
+available /tmp/.X?-lock file, where ? is a number from 0 to
+9.</p>
+
+<p style="margin-left:11%;">-U, --user</p>
+
+<p style="margin-left:22%;">Specify the user name to
+establish environments settings and authority. The default
+is the current value of the USER environment variable.</p>
+
+<h2>INFORMATION
+<a name="INFORMATION"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">Use of the
+following options displays information related to dilithium
+but does not create an output file: <br>
+-h, --help</p>
+
+<p style="margin-left:22%;">Show information about the
+advanced usage of this command.</p>
+
+<p style="margin-left:11%;">-u, --usage</p>
+
+<p style="margin-left:22%;">Displays examples on
+usage&quot;</p>
+
+<p style="margin-left:11%;">-V, --version</p>
+
+<p style="margin-left:22%;">Displays software version
+information&quot;</p>
+
+<h2>DIRECTIVES
+<a name="DIRECTIVES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">-v,
+--verbose</p>
+
+<p style="margin-left:22%;">Include additional information
+during processing. If --verbose is specified after --debug
+then verbose is disabled. Using --verbose automaticaly
+enables the &quot;-verbose&quot; &quot;-logverbose&quot;
+server aguments with log level 7.</p>
+
+<p style="margin-left:11%;">-q, --quite</p>
+
+<p style="margin-left:22%;">Suppress output messages.</p>
+
+<p style="margin-left:11%;">--daemon</p>
+
+<p style="margin-left:22%;">Transform module to daemon.
+Note that if dilithium is renamed dilithium.d or if the
+program is started using a symbolic link named dilithium.d
+(with the &quot;dot-d&quot; added to the end of the file
+name), then dilithium will automaticaly transform into a
+daemon even without the --daemon parameter.</p>
+
+<p style="margin-left:11%;">--no-drop</p>
+
+<p style="margin-left:22%;">Do not drop privileges.
+Normally during Sys V initialization daemons programs are
+started with higher then normal privileges. For security
+purposes, dilithium forfeits these privileges. Use this
+option to allow dilithium to retain system privileges.</p>
+
+<p style="margin-left:11%;">--no-kill</p>
+
+<p style="margin-left:22%;">By default, when the dilithium
+process is terminated, dilithium will attempt to kill the
+child xinit process, which will also kill the associated X
+server. This is so that /etc/init.d/dilithium stop will
+terminate the fvwm-crystal session. If the --no-kill option
+is used then dilithium will not terminate the child
+processes and the X-session must be terminated by some other
+means.</p>
+
+<p style="margin-left:11%;">--no-log</p>
+
+<p style="margin-left:22%;">Do not create a seperate log,
+use syslog.0);</p>
+
+<p style="margin-left:11%;">--logfile &lt;filespec&gt;</p>
+
+<p style="margin-left:22%;">Specify the name log file The
+default is &quot;/var/log/dilithium.log&quot;. Unlike most
+logs, dilithium log is not accumulative, the file is
+overwritten each time dilithium is invoked. Information from
+previous invocation can be obtain from the system log.</p>
+
+<p style="margin-left:11%;">-d, --debug</p>
+
+<p style="margin-left:22%;">Configures all the settings and
+prints debug information, including the command-line like
+statement with parameters.</p>
+
+<h2>HOMEPAGE
+<a name="HOMEPAGE"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">none</p>
+
+<h2>BUGS
+<a name="BUGS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">Your on a limb
+here, try and send me an email
+&lt;wiley-no-spam-hill@gmail.com&gt;</p>
+
+<h2>AUTHOR
+<a name="AUTHOR"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">Wiley Edward
+Hill</p>
+
+<h2>SEE ALSO
+<a name="SEE ALSO"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>xinit</b>(1),<b>X(7),</b>startx(1),<b>Xserver(1),</b>Xorg(1),<b>xorg.conf(5)</b></p>
+
+<h2>COPYRIGHT
+<a name="COPYRIGHT"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">Copyright
+&copy; 2013 Wiley Edward Hill. License GPLv2+: GNU GPL
+version 2 or later. Please see the &rsquo;COPYING&rsquo;
+file included with this program for full details.</p>
+
+<p style="margin-left:11%; margin-top: 1em">This is free
+software: you are free to change and redistribute it. There
+is ABSOLUTELY NO WARRANTY to any extent.</p>
+<hr>
+</body>
+</html>

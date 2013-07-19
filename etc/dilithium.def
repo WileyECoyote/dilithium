@@ -1,0 +1,34 @@
+# Defaults for dilithium initscript
+# sourced by /etc/init.d/dilithium
+# installed at /etc/default/dilithium by the maintainer scripts
+
+#
+# This is a POSIX shell fragment
+#
+
+# Mode options that are passed to the Daemon.
+#DAEMON_ARGS="--debug --daemon"
+#DAEMON_ARGS="--debug"
+#DAEMON_ARGS="--daemon"
+DAEMON_ARGS=""
+
+# The dilithium daemon drops its root privileges after
+# startup and becomes "daemon". If you want it to retain its root
+# status (e.g. to run commands only accessible to the system user),
+# use either "--user root" or "--no-drop":
+#
+# Additional options that are passed to the Daemon.
+#DAEMON_OPTS="--user root"
+#DAEMON_OPTS="--no-drop"
+#DAEMON_OPTS="--no-drop --no-kill"
+DAEMON_OPTS="--user wiley"
+
+
+# To start fvwm even if it is not the default display manager, change
+# HEED_DISPLAY_MANAGER to "false."
+HEED_DEFAULT_DISPLAY_MANAGER=false
+
+DISPLAY_MANAGER=/etc/X11/cyrstal-display-manager
+
+#SERVER_ARGUMENTS="-br -pixmap32 -novtswitch -nolisten tcp vt8"
+SERVER_ARGUMENTS="-br -novtswitch -nolisten tcp vt8"
