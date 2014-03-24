@@ -1,6 +1,6 @@
 #!/bin/sh
 ### BEGIN INIT INFO
-# Provides:          fvwm
+# Provides:          fvwm-crystal
 # Should-Start:      console-screen xfs xfstt dbus network-manager
 # Required-Start:    $local_fs $remote_fs
 # Required-Stop:     $local_fs $remote_fs

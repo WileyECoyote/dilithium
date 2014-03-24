@@ -25,13 +25,13 @@ fvwm-crystal. Dilithium can be started as a daemon from an init.d script
 or as a simple command line launcher like startx for xinit.
 
 dilithium is basically like using startx, except that dilithium is intended
-to be using to start fvwm-crystal. Startx end up using xinit, though I am not
+to be used to start fvwm-crystal. Startx ends up using xinit, though I am not
 sure why; what little that is left to be done to start the X server could
 easily be done in the startx bash script. By default dilithium does not use
 xinit. To force dilithium to use xinit the --xinit switch must be used,
-noting that user information must be know. This means the --xinit option can
-not be used for lauching the display manager for system startup unless the
---user switch is also given.
+noting that user information must be known. This implies the --xinit option
+can not be used for lauching the display manager for system startup unless
+the --user switch is also given.
 
 dilithium accepts a --client argument, so it actually could be used with
 other display managers.

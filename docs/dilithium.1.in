@@ -46,7 +46,7 @@ Generally only one primary display manager is running on one X server and most m
 
 Switch back to the display and desktop with the terminal window type "sudo dilithium" was enter and "select" the window by clicking on window, then use the "CTRL-C" key combination to cancel or kills the second X server and display manager. If all else fails, select re-start or re-boot from either manager to restore the system back to normal. This is just an example to demonstrate running two separate display managers simultaneously. A more realistic application would be to start gdm3 for run level 2 or 3 and use dilithium to start fvwm-crystal for a different run-level.
 
-Note that Dilithium does not check command line arguments, for example if "--client /usr/bin/grapes --cargs purple" is specified then this will passed to xinit.
+Note that Dilithium does not check command line arguments, for example if "--client /usr/bin/grapes --cargs purple" is specified then this will be passed to xinit.
 
 .SH PARAMETERS
 .IP "-c, --client <client>"

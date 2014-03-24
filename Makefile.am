@@ -1,4 +1,3 @@
-
 SUBDIRS = src docs etc data
 
 ACLOCAL_AMFLAGS = -I m4
