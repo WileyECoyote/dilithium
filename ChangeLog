@@ -1,0 +1,3 @@
+2017-10-21 Wiley E. Hill <wileyhill@gmail.com>
+
+    * docs/dilithium.dox: Specify WARN_LOGFILE = ../dilithium-doxygen.log.
