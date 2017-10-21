@@ -34,19 +34,23 @@ The
 .B Dilithium
 program is used to start the X Window System server and fvwm client display manager using the crystal interface configuration on systems that cannot start X directly from /etc/init or in environments that use multiple window systems. Dilithium utilizes the xinit program to accomplish this task. Dilithium attempts to auto-configure all options and environment settings in order to start the X sever with fvwm-crystal. Options may also be specified using command line parameters. Parameters are optional and are non-positional, for example the server argument could be specified before the client or the server after the server arguments. The parameters are case sensitive. Since the client display manager is a parameter, Dilithium can be used to start other display managers.
 
-Dilithium can be used to start fvwm-crystal in different situations without addition information. Both startX and xinit attempt to do this but are not reliable in some envirnments, such as Debian and direvitives, without additional parameters. Dilithium can be used to start Crystal from a command line or in conjunction with initialization scripts such as Sys V init.d scripts. Example initialization scripts are provided. On some systems, such as Debian, options for Sys V initialization can be set using /etc/default/dilithium parameter file. A default parameter file is also provided. On systems where multiple display managers are installed, there are a couple of other optional files that may facilitate starting fvwm-crystal:
+Dilithium can be used to start fvwm-crystal in different situations without addition information. Both startX and xinit attempt to do this but are not reliable in some envirnments, such as Debian and direvitives, without additional parameters. Dilithium can be used to start Crystal from a command line or in conjunction with initialization scripts such as Sys V init.d scripts. Example initialization scripts are provided. On some systems, such as Debian, options for Sys V initialization can be set using a /etc/default/dilithium parameter file. A default parameter file is also provided. On systems where multiple display managers are installed, there are a couple of other optional files that may facilitate starting fvwm-crystal:
+.P
+.RS
+.I 1. /etc/X11/cyrstal-display-manager
+.PP
+.I 2. ~/.xinit
 
-1. /etc/X11/cyrstal-display-manager
-2. ~/.xinit
-
+.RE
 The first file, crystal-display-manager, only needs to contain "/usr/bin/fvwm-crystal" on one line, without the quotes.
 The second file, .xinit, contain a line with: "exec fvwm-crystal" also without the quotes, but this file can also contain other information.
 
-Generally only one primary display manager is running on one X server and most modern Linux systems automatically boot into a Graphical User Interface such as gdm3. It is not uncommon to have 2 or more display managers installed and switch between managers using gsettings or the unfriendly "greeter". It is also entirely possible to have multiple display managers running at the same time. As a simple example, from within gdm or gdm3, open a terminal and type "sudo dilithium" <enter>. This will start a second server with fvwm-crystal as the display manager using the next available display. "Display" in this context refers to a virtual display not a physical display. To switch back to the gdm3 session use the key combination CTRL-ALT-F7. If you see a login prompt then try CTRL-ALT-F8. To switch back to the fvwm-crystal session use CTRL-ALT & the next F-key, either F8 or F9. (Note that most Linux systems are configured to use 6 or 7 seperate virtual terminals, which one can switch between using the ALT-F1 thru - F6 or F7 key combinations. To switch away from a Graphical display terminal the CTRL key must be added. So if while trying to switch between the Graphical display terminals in this example using CTRL-ALT-F? and you see a login prompt, which is running on one of the virtual terminals then you don't need to add the CTRL key. If you see a login prompt then you only need use the ALT-F key combination to switch between the terminals, for example ALT-F2 will switch to virtual terminal 2. From the virtual terminal screen use ALT-F7 or ALT-F8 (depending on how many virtual terminals are configured, to switch back to the Graphical terminals).
+Generally only one primary display manager is running on one X server and most modern Linux systems automatically boot into a Graphical User Interface such as gdm3. It is not uncommon to have 2 or more display managers installed and switch between managers using gsettings or the unfriendly "greeter". It is also entirely possible to have multiple display managers running at the same time. As a simple example, from within gdm or gdm3, open a terminal and type "sudo dilithium" <enter>. This will start a second server with fvwm-crystal as the display manager using the next available display. "Display" in this context refers to a virtual display not a physical display. To switch back to the gdm3 session use the key combination CTRL-ALT-F7. If you see a login prompt then try CTRL-ALT-F8. To switch back to the fvwm-crystal session use CTRL-ALT & the next F-key, either F8 or F9. (Note that most Linux systems are configured to use 6 or 7 seperate virtual terminals, which one can switch between using the ALT-F1 thru -
+F6 or F7 key combinations. To switch away from a Graphical display terminal the CTRL key must be added. So if while trying to switch between the Graphical display terminals in this example using CTRL-ALT-F? and you see a login prompt, which is running on one of the virtual terminals then you don't need to add the CTRL key. If you see a login prompt then you only need to use the ALT-F key combination to switch between the terminals, for example ALT-F2 will switch to virtual terminal 2. From the virtual terminal screen use ALT-F7 or ALT-F8 (depending on how many virtual terminals are configured, to switch back to the Graphical terminals).
 
-Switch back to the display and desktop with the terminal window type "sudo dilithium" was enter and "select" the window by clicking on window, then use the "CTRL-C" key combination to cancel or kills the second X server and display manager. If all else fails, select re-start or re-boot from either manager to restore the system back to normal. This is just an example to demonstrate running two separate display managers simultaneously. A more realistic application would be to start gdm3 for run level 2 or 3 and use dilithium to start fvwm-crystal for a different run-level.
+Switch back to the display and desktop with the terminal window where "sudo dilithium" was entered and "select" the window by clicking any where on window, then use the "CTRL-C" key combination to cancel or kills the second X server and display manager. If all else fails, select re-start or re-boot from either manager to restore the system back to normal. This is just an example to demonstrate running two separate display managers simultaneously. A more realistic application would be to start gdm3 for run level 2 or 3 and use dilithium to start fvwm-crystal for a different run-level.
 
-Note that Dilithium does not check command line arguments, for example if "--client /usr/bin/grapes --cargs purple" is specified then this will passed to xinit.
+Note that Dilithium does not check command line arguments, for example if "--client /usr/bin/grapes --cargs purple" is specified then this will be passed to xinit.
 
 .SH PARAMETERS
 .IP "-c, --client <client>"
@@ -60,7 +64,7 @@ Specify optional arguments to be passed to the X server, the default is '-br -no
 .IP ":, --display"
 Specify the display to be used for the X server. The default is to determine the next available /tmp/.X?-lock file, where ? is a number from 0 to 9.
 .IP "-U, --user"
-Specify the user name to establish environments settings and authority. The default is the current value of the USER environment variable.
+Specify the user name to establish environment settings and authority. The default is the current value of the USER environment variable.
 
 .SH INFORMATION
 Use of the following options displays information related to dilithium but does not create an output file:
@@ -85,9 +89,9 @@ By default, when the dilithium process is terminated, dilithium will attempt to 
 .IP "--no-log
 Do not create a seperate log, use syslog.\n");
 .IP "--logfile <filespec>
-Specify the name log file The default is "/var/log/dilithium.log". Unlike most logs, dilithium log is not accumulative, the file is overwritten each time dilithium is invoked. Information from previous invocation can be obtain from the system log.
+Specify the log file name. The default is "/var/log/dilithium.log". Unlike most logs, the dilithium log is not accumulative, the file is overwritten each time dilithium is invoked. Information from previous invocation can be obtain from the system log.
 .IP "-d, --debug"
-Configures all the settings and prints debug information, including the command-line like statement with parameters.
+Configures all the settings and prints debug information, including the command-line statement with parameters.
 
 .SH HOMEPAGE
 none
