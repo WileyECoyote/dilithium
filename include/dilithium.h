@@ -1,7 +1,7 @@
 /* dilithium.h
    Header file for dilithium.cc.
 */
-/**
+/*!
  * @par dilithium - GPL Laucher for FVWM-CRYSTAL
  *
  * Copyright (C) 2013 Wiley Edward Hill

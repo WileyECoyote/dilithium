@@ -1,7 +1,8 @@
 /* daemon.h
    Header file for daemon.cc.
 */
-/* dilithium - GPL Laucher for FVWM-CRYSTAL
+/*!
+ * @par dilithium - GPL Laucher for FVWM-CRYSTAL
  *
  * Copyright (C) 2013 Wiley Edward Hill
  * Copyright (C) 2013 dilithium Contributors (see ChangeLog for details)

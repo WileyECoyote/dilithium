@@ -1,7 +1,7 @@
 /* common.h
    Common header file for the Dilithium Program.
 */
-/**
+/*!
  * @par dilithium - GPL Laucher for FVWM-CRYSTAL
  *
  * Copyright (C) 2013 Wiley Edward Hill
@@ -26,7 +26,7 @@
  *    @brief   Provides inclusions common to multible source files
  *    @author  Wiley Edward Hill
  *    @date    2012.07.04
- */ 
+ */
 #ifndef COMMON_COMMON_H         /* Prevent double inclusion */
 #define COMMON_COMMON_H
 
