@@ -6,6 +6,8 @@
 #include "xlogin.h"
 #include "spawner.h"
 
+#include <sys/resource.h>
+
 static char *clientargv[50];
 static char *serverargv[100];
 

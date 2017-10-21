@@ -6,3 +6,6 @@
     * docs/dilithium.dox: Specify WARN_LOGFILE = ../dilithium-doxygen.log.
 
     * docs/dilithium.1.in: Update phrasing and minor formatting.
+
+    * src/spawner.cc: Include "resource.h", not sure why this is need now
+      and not 4 years ago -- need to tests on other platforms.
