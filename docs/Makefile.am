@@ -5,7 +5,7 @@
 EXTRA_DIST = $(html_man_files) what-is-dilithium.html server_options.txt crystal.png
 
 all:
-	@echo 'Type: make doxygen to create doxygen documentation for gschem'
+	@echo 'Type: make doxygen to create doxygen documentation for dilithium'
 
 doxygen:dilithium.dox
 	@echo 'Creating doxygen documentation for dilithium...'
@@ -42,9 +42,6 @@ else
 	@echo "No working groff available: cannot create $@"
 	@! :
 endif
-
-
-
 
 
 MOSTLYCLEANFILES     = *.log core FILE *~
