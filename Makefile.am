@@ -15,3 +15,12 @@ EXTRA_DIST =    COPYING \
 		config.h \
 		version.h version.h.in
 
+doxygen:
+
+# call 'make doxygen' for dilithium
+if ENABLE_DOXYGEN
+	(cd docs; $(MAKE) doxygen) || exit 1;
+else
+	@echo 'configure was not run with the --enable-doxygen switch.'
+	@echo 'The documentation cannot be built from the sources.'
+endif

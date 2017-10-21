@@ -1,5 +1,8 @@
 2017-10-21 Wiley E. Hill <wileyhill@gmail.com>
 
+    * Makefile.am: Revise to allow building Doxygen documentation from the
+      top of the source tree.
+
     * docs/dilithium.dox: Specify WARN_LOGFILE = ../dilithium-doxygen.log.
 
     * docs/dilithium.1.in: Update phrasing and minor formatting.
