@@ -114,8 +114,8 @@ XImage* jpeg_decode (const char filename[], Display *display, int xdepth,
    *sucess=false;       /* Set sucess, passed by pointer, so reference with  */
    *didxcreate=false;
 
-   if ((infile = fopen (filename, "rb")) == NULL)
-   {
+   if ((infile = fopen (filename, "rb")) == NULL) {
+
       fprintf (stderr,"\ndecode_jpeg was unable to open the file: [%s]\n", filename);
       fflush (stderr);
       return NULL;
@@ -124,15 +124,15 @@ XImage* jpeg_decode (const char filename[], Display *display, int xdepth,
    cinfo.err = jpeg_std_error (&jerr.pub);
    jerr.pub.error_exit = decodejpeg_error_exit;
 
-   if (sigsetjmp(jerr.setjmp_buffer,1))
-   {
+   if (sigsetjmp(jerr.setjmp_buffer,1)) {
+
       /* Whoops there was a jpeg error */
       fclose (infile);
       jpeg_destroy_decompress (&cinfo);
 
       *sucess=false;
       fprintf(stderr, "decode_jpeg: error handler exits here, didxcreate=%d\n", *didxcreate);
-   return(xim);         /* Return or dummy image  */
+      return(xim);         /* Return or dummy image  */
    }
 
    /* It is possible to generate an error setting up for decompress if the
@@ -148,23 +148,22 @@ XImage* jpeg_decode (const char filename[], Display *display, int xdepth,
 
    /* When the jpeg routines get a garbage header they leave width and
     * height containing any old shit, often a very large number */
-   if ((cinfo.output_width>1280)|(cinfo.output_height>1280))
-   {
-      /* Set dummy values -
-       * the code is comitted to allocating buffers and create XImages */
-      cinfo.output_width=320;
-      cinfo.output_height==256;
+   if ((cinfo.output_width>1280)|(cinfo.output_height>1280)) {
+
+      /* Set dummy values - the code is committed to allocating buffers
+       * and create XImages */
+      cinfo.output_width  = 320;
+      cinfo.output_height = 256;
    }
    width = cinfo.output_width;
    height = cinfo.output_height;
 
-   if (cinfo.output_components>4)
-   {
+   if (cinfo.output_components>4) {
       cinfo.output_components=4;
    }
 
-   if (xdepth == 16)
-   {
+   if (xdepth == 16) {
+
       /* The store_data function points to the function handler convert_for_16.
        * This is a very fast way to ensure that one of the 3 buffer conversion
        * routines is called without stack pushes for function arguments  */
@@ -176,10 +175,10 @@ XImage* jpeg_decode (const char filename[], Display *display, int xdepth,
                         (char *) buffer_16bpp, width, height, 16, width * 2);
       *didxcreate=true;
    }
-   else
-   {
-      if (xdepth == 24)
-      {
+   else {
+
+      if (xdepth == 24) {
+
          store_data = &convert_for_32;
 
          /* Alocate memory for 32 bit image image */
@@ -188,18 +187,18 @@ XImage* jpeg_decode (const char filename[], Display *display, int xdepth,
                            (char *) buffer_32bpp, width, height, 32, width * 4);
          *didxcreate=true;
       }
-      else
-      {
-         if (xdepth == 32)
-         {
+      else {
+
+         if (xdepth == 32) {
+
             store_data = &convert_for_32;
             buffer_32bpp = (long*) malloc (width * height * 4);
             xim=XCreateImage (display, CopyFromParent, xdepth, ZPixmap, 0,
                               (char *) buffer_32bpp, width, height, 32, width * 4);
             *didxcreate=true;
          }
-         else
-         {
+         else {
+
             fprintf (stderr, "decode_jpeg: Unsupported depth.%d\n",xdepth);
             fclose(infile);
             return NULL;
@@ -215,12 +214,12 @@ XImage* jpeg_decode (const char filename[], Display *display, int xdepth,
 
    bpix = cinfo.output_components;
 
-   while (cinfo.output_scanline < cinfo.output_height)
-   {
+   while (cinfo.output_scanline < cinfo.output_height) {
+
       jpeg_read_scanlines (&cinfo, buffer, 1);
       a = 0;
-      for (i = 0; i < bpix * cinfo.output_width; i += bpix)
-      {
+
+      for (i = 0; i < bpix * cinfo.output_width; i += bpix) {
          (*store_data) (width, a, g, buffer[0][i], buffer[0][i + 1], buffer[0][i + 2]);
          a++;
       }
