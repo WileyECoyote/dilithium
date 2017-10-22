@@ -85,9 +85,8 @@ using namespace xlib;
  * really for security; the user information is needed by both the server
  * and the client for user specific customization files. No login is
  * required if the --user switch was given as a parameter. The computer
- * would just be an insecure, "one-user" machine that boot straight into
+ * might just be an insecure "one-user" machine that boots straight into
  * a GUI.
- *
  */
 
 class login_window;
@@ -276,7 +275,7 @@ public:
  *    Yes, hotkeys. This function is a virtual over-ride of the
  * base window on_key_release in order to implement "Hotkeys".
  * Input is only received when one of the button has focus.
- * 
+ *
  * \note This function is called before sibling on_key_release
  */
   void on_key_release ( character c )
