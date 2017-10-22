@@ -1,3 +1,8 @@
+2017-10-22 Wiley E. Hill <wileyhill@gmail.com>
+
+    * src/xlogin/xjpeg.cc: Initialize pointer to xim to NULL in jpeg_decode,
+      this is more to appease static code analyzer.
+
 2017-10-21 Wiley E. Hill <wileyhill@gmail.com>
 
     * Makefile.am: Revise to allow building Doxygen documentation from the

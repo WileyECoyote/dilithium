@@ -109,10 +109,12 @@ XImage* jpeg_decode (const char filename[], Display *display, int xdepth,
    int g, i, a;
    int bpix;
    int width, height;
-   XImage *xim;         /* Uninitialised pointer to an Ximage strcuture  */
+   XImage *xim;          /* Uninitialised pointer to an Ximage strcuture */
 
    *sucess=false;       /* Set sucess, passed by pointer, so reference with  */
    *didxcreate=false;
+    xim        = NULL;
+    xim        = NULL;   /* Appease static code analyzers */
 
    if ((infile = fopen (filename, "rb")) == NULL) {
 
