@@ -27,7 +27,7 @@
  *    @brief   Console class is used to save and restore the active console
  *    @author  Wiley Edward Hill
  *    @date    2012.07.09
- */ 
+ */
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>

@@ -83,6 +83,7 @@ void exit_funtion (void)
 void Write2Log(const char* str) {
     logfile << str << std::endl;
 }
+
 /*! \brief Create X Authority File
  *  \par Function Description
  *  This function creates an X authority file in the user home directory
@@ -305,7 +306,9 @@ char get_process_name (pid_t qid, char *buffer)
   filename.append(&str_id[0]);
   filename.append("/status");
 
+
   if ( stat (filename.c_str(), &sb) != -1) {
+
     if (( input = fopen( filename.c_str(), "r")) != NULL) {
       n = fscanf(input, "%s ", &name[0]);
       n = fscanf(input, "%s ", &state[0]);
@@ -339,7 +342,7 @@ char get_process_name (pid_t qid, char *buffer)
  *  then a the program is assume to be stating from an initialization
  *  script if the uptime is less than BOOT_TIME, otherwise a it is
  *  assumed that the run-level is being changed.
- * 
+ *
  *  \param dilithium pointer to a Dilithium object.
  *
  */
@@ -522,7 +525,7 @@ char* get_server() {
  *  This function is utilize xinit to invoke xinit to start the
  *  the server with the client. To use the routine the --use-xinit
  *  option must be given as an argument to the program.
- * 
+ *
  *  \param d pointer to a Dilithium object.
  *
  */
@@ -625,7 +628,7 @@ bool set_display( Dilithium *dilithium ) {
  *  for the client, client arguments and the server arguments, the
  *  environment is check for a value and if found the environment
  *  setting is used instead of the default value.
- * 
+ *
  */
 bool set_options( Dilithium *d ) {
 
@@ -706,7 +709,7 @@ bool set_options( Dilithium *d ) {
  *  A message is generated for the results of the action.
  *
  *  \param d pointer to a char string containing the filename.
- * 
+ *
  *  \retval true if success or false of file could not be deleted.
  */
 int remove_pid_file (const char *filename)
@@ -715,7 +718,9 @@ int remove_pid_file (const char *filename)
    int ret_val;
 
    errno = 0;
+
    if (stat(filename, &sb) != -1) {
+
      if ( (ret_val = remove ( filename )) =! 0 ) {
        ErrorMessage("Could not delete stale PID File <%s>.", filename);
      }
@@ -738,7 +743,7 @@ int remove_pid_file (const char *filename)
  *  removal of the file.
  *
  * \param d pointer to a char string containing the name of the program.
- * 
+ *
  * \retval result boolean = false if a previous instance is running
  *                          otherwise result = true
  */
@@ -803,7 +808,7 @@ bool Expell_Old_Daemon (char *name) {
  *  function also handles the help, usage and version arguments.
  *
  * Return: 0 exit, 1 continue
- * 
+ *
  */
 int parse_command_line(int argc, char *argv[], Dilithium *d ) {
 
@@ -1016,7 +1021,7 @@ int main(int argc, char *argv[]) //,char** envp
 
 /*! \brief Dilithium Initialize Class Object
  *  \par Function Description
- * 
+ *
  *  This function isjust setup pointer to char arrays and clears the
  * memory assocated with the arrays.
  *
@@ -1053,6 +1058,7 @@ void debug_environment() {
   }
 
 }
+
 /*! \brief Dilithium Initialize USer Info Class Object
  *  \par Function Description
  *

@@ -3,7 +3,7 @@
 */
 /**
  * @par dilithium - GPL Laucher for FVWM-CRYSTAL
- * 
+ *
  * Copyright (C) 2013 Wiley Edward Hill
  * Copyright (C) 2013 dilithium Contributors (see ChangeLog for details)
  *
@@ -100,10 +100,13 @@ int Daemon::resolve_descriptors  (int flags) {
   int                 i, maxfd, fd;
 
   if (!(flags & BD_NO_CLOSE_FILES)) { /* Close all open files */
+
     /* Get maximum number of file descriptors. */
     if (getrlimit(RLIMIT_NOFILE, &rl) < 0)
     {
+
       maxfd = sysconf(_SC_OPEN_MAX);
+
       if (maxfd == -1)                /* Limit is indeterminate... */
           maxfd = BD_MAX_CLOSE;       /* so take a guess */
 
@@ -122,6 +125,7 @@ int Daemon::resolve_descriptors  (int flags) {
 
   if (!(flags & BD_NO_REOPEN_STD_FDS)) {
     close(STDIN_FILENO);            /* Reopen standard fd's to /dev/null */
+
 
     fd = open("/dev/null", O_RDWR);
 

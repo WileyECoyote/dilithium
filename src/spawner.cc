@@ -250,8 +250,10 @@ int Spawner::start_server()
     return (EXIT_FAILURE);
 
     break;
+
   case -1:
     break;
+
   default:
     /* don't nice server */
     setpriority(PRIO_PROCESS, sid, -1);
@@ -272,6 +274,7 @@ int Spawner::start_server()
      alarm(SERVER_BOOT_DELAY);
 
      sigsuspend(&old);
+
      /* Cancel the alarm signal */
      alarm(0);
 
@@ -473,5 +476,4 @@ Spawner::Spawner (Dilithium *d) {
   initialize();
 
   set_up_signals();
-
 }

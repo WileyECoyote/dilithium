@@ -1,11 +1,11 @@
 /** xjpeg.cc
  *
  * @par A jpeg decoding utilitity for X Clients
- * 
+ *
  * (c) 2008 Jonathan Andrews
  *
  * Date: "14 Sep 2008\0";
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -29,7 +29,7 @@
  *
  *    @note    Modified from of xlogin-rootjpeg.c, by Jonathan Andrews.
  *             Modifications made by Wiley Hill for user as module.
- * 
+ *
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -232,6 +232,7 @@ XImage* jpeg_decode (const char filename[], Display *display, int xdepth,
    fclose (infile);
 
    *sucess=true;
+
    return(xim);   /* Return pointer to structure now alloced by XCreateImage  */
 }
 

@@ -230,16 +230,19 @@ void setWindowPath( Display *xd )
   size_t len;
 
   prop = XInternAtom(xd, "XFree86_VT", False);
+
   if (prop == None) {
     ShowMessage("Unable to intern XFree86_VT atom");
     return;
   }
+
   if (XGetWindowProperty(xd, DefaultRootWindow(xd), prop, 0, 1,
     False, AnyPropertyType, &actualtype, &actualformat, &nitems,
     &bytes_after, &buf)) {
     ShowMessage("No XFree86_VT property detected on X server, WINDOWPATH won't be set");
     return;
   }
+
   if (nitems != 1) {
     ShowMessage("XFree86_VT property unexpectedly has %lu items instead of 1", nitems);
     XFree(buf);
