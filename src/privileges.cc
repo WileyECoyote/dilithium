@@ -1,7 +1,8 @@
 /* privileges.cc
    Component Source file for the Dilithium Program.
 */
-/* dilithium - GPL Laucher for FVWM-CRYSTAL
+/*!
+ * @par dilithium - GPL Laucher for FVWM-CRYSTAL
  *
  * Copyright (C) 2013 Wiley Edward Hill
  * Copyright (C) 2013 dilithium Contributors (see ChangeLog for details)
