@@ -324,13 +324,13 @@ private:
   std::string username;
   std::string password;
 
-  username_text_box* m_username;
-  password_text_box* m_password;
+  username_text_box *m_username;
+  password_text_box *m_password;
 
-  okay_button*     m_okay;
-  quit_button*     m_quit;
-  reboot_button*   m_reboot;
-  shutdown_button* m_shutdown;
+  okay_button     *m_okay;
+  quit_button     *m_quit;
+  reboot_button   *m_reboot;
+  shutdown_button *m_shutdown;
 
   void add_label ( int x, int y, std::string text );
 
