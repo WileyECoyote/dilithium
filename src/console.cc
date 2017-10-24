@@ -193,13 +193,3 @@ bool Console::restore_saved_vt(void)
   }
   return false;
 }
-
-
-
-
-
-
-
-
-
-
